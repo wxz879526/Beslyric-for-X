@@ -18,14 +18,12 @@ win32{
 #   具体使用步骤，可参看项目： https://github.com/BensonLaur/beslyric-lib
 
 #ffmpeg
-
-FFMPEG_INCLUDE  =   C:/lib/beslyric-lib/win32/ffmpeg_4_0_1/include
-FFMPEG_LIB      =   C:/lib/beslyric-lib/win32/ffmpeg_4_0_1/lib
-
+FFMPEG_INCLUDE  =   $$PWD/../../beslyric-lib/win32/ffmpeg_4_0_1/include
+FFMPEG_LIB      =   $$PWD/../../beslyric-lib/win32/ffmpeg_4_0_1/lib
 #sdl
 
-SDL_INCLUDE     =   C:/lib/beslyric-lib/SDL_2_0_3/include
-SDL_LIB         =   C:/lib/beslyric-lib/SDL_2_0_3/lib
+SDL_INCLUDE     =   $$PWD/../../beslyric-lib/SDL_2_0_3/include
+SDL_LIB         =  $$PWD/../../beslyric-lib/SDL_2_0_3/lib
 
 #other
 #OTHER_INCLUDE   =   C:/lib/beslyric-lib/win32/include
