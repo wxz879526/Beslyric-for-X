@@ -177,7 +177,6 @@ void StackFrame::resizeEvent(QResizeEvent *event)
     addItemWidget->setGeometry(addItemWidgetRect);
 }
 
-
 void StackFrame::SetSkin(QString skinName, bool bFirstInit)
 {
     AppHelper::SetStyle(pApp, skinName);
@@ -219,6 +218,7 @@ void  StackFrame::toggleMaxRestoreStatus()
 {
     if(isMaximized())
     {
+        setBorderMain(8);
         showNormal();
 
         mainWidget->topWidget->btnMax->setVisible(true);
@@ -226,9 +226,8 @@ void  StackFrame::toggleMaxRestoreStatus()
     }
     else
     {
+        setBorderMain(0);
         showMaximized();
-
-        setGeometry(-borderMain, -borderMain, width()+2*borderMain, height()+ 2*borderMain);
 
         mainWidget->topWidget->btnMax->setVisible(false);
         mainWidget->topWidget->btnRestore->setVisible(true);
