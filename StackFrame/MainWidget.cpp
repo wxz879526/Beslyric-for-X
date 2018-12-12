@@ -139,7 +139,6 @@ void MainWidget::initConnection()
 
 }
 
-
 bool MainWidget::keyPress(QKeyEvent  *event)
 {
     if( middleWidget->currentPage == 0 &&                    //在制作页面，且在制作歌词过程

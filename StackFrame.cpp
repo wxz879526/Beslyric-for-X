@@ -42,7 +42,6 @@ void StackFrame::initSetting()
 {
     //载入设置
     SettingManager::GetInstance().loadSettingData();
-
 }
 
 void StackFrame::initLayout()

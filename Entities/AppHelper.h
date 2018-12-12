@@ -17,7 +17,7 @@ public:
         QSharedPointer<ISkin> skin = SkinFacgtory::getSkin(styleName);
         QString qss = skin->GetCssString();
 
-        QFile file(QString(":/resource/css/black.css"));
+        QFile file(QString(":/resource/qss/black.qss"));
         file.open(QFile::ReadOnly);
         QString qssTest = QLatin1String(file.readAll());    //暂时保留测试用
 

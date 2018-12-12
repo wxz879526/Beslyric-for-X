@@ -60,7 +60,7 @@ void TopWidget::initLayout()
     btnRestore->setObjectName("btnRestore");
     btnClose->setObjectName("btnClose");
 
-    QHBoxLayout*    hLayout = new QHBoxLayout(topWidgetContainer);
+    QHBoxLayout *hLayout = new QHBoxLayout(topWidgetContainer);
     hLayout->addWidget(btnIcon);
     hLayout->addSpacerItem(new QSpacerItem(60 * BesScaleUtil::scale(),25,QSizePolicy::Fixed,QSizePolicy::Fixed));
     hLayout->addWidget(labelTitle);

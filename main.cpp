@@ -10,15 +10,6 @@
 
 #include <LyricListManager.h>
 
-
-void test()
-{
-
-
-}
-//------------------- test ----------------------
-
-
 int main(int argc, char *argv[])
 {
     MyApplication app(argc, argv);
@@ -27,9 +18,6 @@ int main(int argc, char *argv[])
     app.SetMakingLyricNotifyWidget(MainFrameWidget.mainWidget);
     app.SetStackFrame(&MainFrameWidget);
     MainFrameWidget.show();
-
-    //test();
-
 
     return app.exec();
 }

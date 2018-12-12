@@ -9,11 +9,14 @@
 class MainWidget;
 class StackFrame;
 
-class MyApplication:public QApplication
+class MyApplication : public QApplication
 {
 public:
-    MyApplication(int &argc,char **argv): QApplication(argc,argv)
-    {notifyWidget = nullptr;stackFrame= nullptr;}
+    MyApplication(int &argc,char **argv) : QApplication(argc,argv)
+    {
+        notifyWidget = nullptr;
+        stackFrame= nullptr;
+    }
 
     void SetMakingLyricNotifyWidget(MainWidget* widget)
     {
@@ -25,7 +28,7 @@ public:
         stackFrame = stackFrameWidget;
     }
 
-    bool notify(QObject *obj, QEvent *e)
+    bool notify(QObject *obj, QEvent *e) override
     {
          if(e->type() == QEvent::KeyPress)
          {

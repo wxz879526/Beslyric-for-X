@@ -23,7 +23,6 @@ public:
 signals:
     void OnDoubleClick();
 
-
 public:
     QIcon*              icon;
     BesButton*          btnIcon;

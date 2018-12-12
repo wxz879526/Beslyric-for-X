@@ -68,7 +68,7 @@ signals:
 
 
 protected:
-    virtual void run()
+    virtual void run() override
     {
         bool mute;
         {
@@ -84,7 +84,6 @@ protected:
            m_bIsChecking = false; //退出
         }
     }
-
 
     void CheckUpdate(bool mute)
     {
@@ -150,13 +149,9 @@ protected:
         else
         {
             result.nResult = 1;
-
             if(!mute)
                 emit sig_haveCheckResult(result);
         }
-
-
-
     }
 
 private:
