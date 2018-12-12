@@ -15,13 +15,13 @@
  *   StackFrame 程序的主控件类，使用 QStacklayout 布局
  *   包含程序的主体功能控件 和 最外层的“悬浮控件”（如皮肤盒等）
  */
-class StackFrame : public BesFramelessWidget
+class MainWindow : public BesFramelessWidget
 {
     Q_OBJECT
 
 public:
-    StackFrame(QApplication* pApplication, QWidget *parent = 0);
-    ~StackFrame();
+    MainWindow(QApplication* pApplication, QWidget *parent = 0);
+    ~MainWindow();
 
     void initSetting();
     void initLayout();

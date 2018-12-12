@@ -3,11 +3,11 @@
 
 #include <QApplication>
 #include <QMouseEvent>
-#include "StackFrame.h"
+#include "MainWindow.h"
 #include <QWidget>
 
 class MainWidget;
-class StackFrame;
+class MainWindow;
 
 class MyApplication : public QApplication
 {
@@ -23,7 +23,7 @@ public:
         notifyWidget  = widget;
     }
 
-    void SetStackFrame(StackFrame* stackFrameWidget)
+    void SetStackFrame(MainWindow* stackFrameWidget)
     {
         stackFrame = stackFrameWidget;
     }
@@ -57,7 +57,7 @@ public:
 
 private:
     MainWidget* notifyWidget;
-    StackFrame* stackFrame;
+    MainWindow* stackFrame;
 };
 
 #endif // MY_APPLICATION_H

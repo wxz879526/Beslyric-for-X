@@ -1,10 +1,10 @@
-﻿#include "StackFrame.h"
+﻿#include "MainWindow.h"
 #include <QVBoxLayout>
 #include "AppHelper.h"
 #include "SettingManager.h"
 #include "BesScaleUtil.h"
 
-StackFrame::StackFrame(QApplication *pApplication,QWidget *parent)
+MainWindow::MainWindow(QApplication *pApplication,QWidget *parent)
     : BesFramelessWidget(parent),mainWidget(nullptr),skinBoxWidget(nullptr),addItemWidget(nullptr)
 {
     pApp = pApplication;
@@ -33,18 +33,19 @@ StackFrame::StackFrame(QApplication *pApplication,QWidget *parent)
     initEntity();
 }
 
-StackFrame::~StackFrame()
+MainWindow::~MainWindow()
 {
-
+    login.exit(0);
+    login.wait();
 }
 
-void StackFrame::initSetting()
+void MainWindow::initSetting()
 {
     //载入设置
     SettingManager::GetInstance().loadSettingData();
 }
 
-void StackFrame::initLayout()
+void MainWindow::initLayout()
 {
     mainWidget = new MainWidget(this);
 
@@ -59,7 +60,7 @@ void StackFrame::initLayout()
     isMainOnTop = true;
 }
 
-void StackFrame::initConnection()
+void MainWindow::initConnection()
 {
     connect(mainWidget->topWidget, SIGNAL(OnDoubleClick()),this, SLOT(toggleMaxRestoreStatus()));
 
@@ -105,11 +106,9 @@ void StackFrame::initConnection()
 
     connect(this,SIGNAL(onFinalSkinNameChanged(QString)),
             this->mainWidget->middleWidget->pagePreviewLyric->lyricViewer, SLOT(skinNameChanged(QString)));
-
-
    }
 
-void StackFrame::initEntity()
+void MainWindow::initEntity()
 {
     qRegisterMetaType<CheckUpgradeResult>("CheckUpgradeResult");
 
@@ -126,24 +125,24 @@ void StackFrame::initEntity()
 
 }
 
-void StackFrame::setBorderMain(int border)
+void MainWindow::setBorderMain(int border)
 {
     borderMain = border;
     BesFramelessWidget::SetFrameBorder(borderMain);
 }
 
-void StackFrame::mouseReleaseEvent(QMouseEvent *event)
+void MainWindow::mouseReleaseEvent(QMouseEvent *event)
 {
     BesFramelessWidget::mouseReleaseEvent(event);
 }
 
-void StackFrame::mouseMoveEvent(QMouseEvent *event)
+void MainWindow::mouseMoveEvent(QMouseEvent *event)
 {
     //所有的mouseMove 都希望传给 BesFramelessWidget处理
     BesFramelessWidget::mouseMoveEvent(event);
 }
 
-void StackFrame::mousePressEvent(QMouseEvent *event)
+void MainWindow::mousePressEvent(QMouseEvent *event)
 {
     //由于 BesFramelessWidget 要求获得所有鼠标信息，处理鼠标图案和拖动功能，但是
     //          这里只希望处理标题拖动 和 边缘resize 操作，所以判断是否在标题 或 边缘，决定是否处理press
@@ -155,7 +154,7 @@ void StackFrame::mousePressEvent(QMouseEvent *event)
         QWidget::mousePressEvent(event);
 }
 
-void StackFrame::resizeEvent(QResizeEvent *event)
+void MainWindow::resizeEvent(QResizeEvent *event)
 {
     BesFramelessWidget::resizeEvent(event);
 
@@ -176,7 +175,7 @@ void StackFrame::resizeEvent(QResizeEvent *event)
     addItemWidget->setGeometry(addItemWidgetRect);
 }
 
-void StackFrame::SetSkin(QString skinName, bool bFirstInit)
+void MainWindow::SetSkin(QString skinName, bool bFirstInit)
 {
     AppHelper::SetStyle(pApp, skinName);
 
@@ -185,7 +184,7 @@ void StackFrame::SetSkin(QString skinName, bool bFirstInit)
     BesMessageBox::setIsBlackTheme(skinName == "black");
 }
 
-void StackFrame::SetSpecialSkin(QString skinName ,bool bFirstInit)
+void MainWindow::SetSpecialSkin(QString skinName ,bool bFirstInit)
 {
     if(skinBoxWidget)
         skinBoxWidget->setFinalSkinName(skinName, bFirstInit);
@@ -196,15 +195,10 @@ void StackFrame::SetSpecialSkin(QString skinName ,bool bFirstInit)
     if(mainWidget)
     {
         mainWidget->middleWidget->pageMain->setFinalSkinName(skinName);
-
         mainWidget->middleWidget->pageMain->boxPageLyricList->setFinalSkinName(skinName);
-
         mainWidget->middleWidget->pagePreviewLyric->setWheterToUseBlackMask( skinName == "black");
-
-        {
         mainWidget->middleWidget->pageLyricList->lyricListHistory->setFinalSkinName( skinName);
         mainWidget->middleWidget->pageLyricList->lyricListCreated->setFinalSkinName( skinName);
-        }
         mainWidget->middleWidget->pageSetting->settingWidget->settingLeftNavigator->setFinalSkinName(skinName);
     }
 
@@ -213,7 +207,7 @@ void StackFrame::SetSpecialSkin(QString skinName ,bool bFirstInit)
 
 
 //切换最大化和最小化
-void  StackFrame::toggleMaxRestoreStatus()
+void  MainWindow::toggleMaxRestoreStatus()
 {
     if(isMaximized())
     {
@@ -234,7 +228,7 @@ void  StackFrame::toggleMaxRestoreStatus()
 }
 
 //显示或隐藏皮肤盒
-void StackFrame::toggleSkinBox()
+void MainWindow::toggleSkinBox()
 {
     if(isMainOnTop)
     {
@@ -249,7 +243,7 @@ void StackFrame::toggleSkinBox()
     }
 }
 
-void StackFrame::toggleAddItemWidget()
+void MainWindow::toggleAddItemWidget()
 {
     if(isMainOnTop)
     {
@@ -264,7 +258,7 @@ void StackFrame::toggleAddItemWidget()
     }
 }
 
-bool StackFrame::mousePressFilter(QMouseEvent *event)
+bool MainWindow::mousePressFilter(QMouseEvent *event)
 {
     QPoint currentPoint = event->pos();
 
@@ -286,7 +280,7 @@ bool StackFrame::mousePressFilter(QMouseEvent *event)
 }
 
 //将主程序控件提到最前（隐藏所有浮动框）(生效则返回true)
-bool StackFrame::bringMainToTop()
+bool MainWindow::bringMainToTop()
 {
     if(!isMainOnTop)
     {
@@ -299,7 +293,7 @@ bool StackFrame::bringMainToTop()
     return false;
 }
 
-void StackFrame::onUpdateResultFound(CheckUpgradeResult result)
+void MainWindow::onUpdateResultFound(CheckUpgradeResult result)
 {
 
     QString strUpdate;

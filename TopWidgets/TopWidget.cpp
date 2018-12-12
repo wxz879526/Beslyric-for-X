@@ -87,3 +87,9 @@ void TopWidget::initConnection()
 {
 }
 
+void TopWidget::mouseDoubleClickEvent(QMouseEvent *event)
+{
+    Q_UNUSED(event);
+    emit OnDoubleClick();
+}
+

@@ -46,7 +46,7 @@ include(Utility/Utility.pri)
 
 
 SOURCES += main.cpp \
-    StackFrame.cpp
+    MainWindow.cpp
 
 HEADERS  += \
     Define/Define.h\
@@ -54,8 +54,8 @@ HEADERS  += \
     Define/Struct.h\
     Define/Static.h\
     global.h \
-    StackFrame.h \
-    MyApplication.h
+    MyApplication.h \
+    MainWindow.h
 
 DISTFILES +=
 
