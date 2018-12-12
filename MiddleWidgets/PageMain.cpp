@@ -36,7 +36,8 @@ void PageMain::initLayout()
     btnDownloadLyric = new BesButton(QIcon(":/resource/image/download_lyric_black.png"),
                                     tr("  下载歌词"),leftBoardMainPage);
 
-    btnMakingLyric->setCheckable(true);     btnMakingLyric->setChecked(true);
+    btnMakingLyric->setCheckable(true);
+    btnMakingLyric->setChecked(true);
     btnDownloadSong->setCheckable(true);
     btnDownloadLyric->setCheckable(true);
 
@@ -101,12 +102,20 @@ void PageMain::initLayout()
 
 void PageMain::initConnection()
 {
-    connect(btnMakingLyric,&QPushButton::toggled, [=](bool checked)
-    {if(checked)subpageStackedLayout->setCurrentIndex(0);});
-    connect(btnDownloadSong,&QPushButton::toggled, [=](bool checked)
-    {if(checked)subpageStackedLayout->setCurrentIndex(1);});
-    connect(btnDownloadLyric,&QPushButton::toggled, [=](bool checked)
-    {if(checked)subpageStackedLayout->setCurrentIndex(2);});
+    connect(btnMakingLyric,&QPushButton::toggled, [=](bool checked){
+        if(checked)
+            subpageStackedLayout->setCurrentIndex(0);
+    });
+
+    connect(btnDownloadSong,&QPushButton::toggled, [=](bool checked){
+        if(checked)
+            subpageStackedLayout->setCurrentIndex(1);
+    });
+
+    connect(btnDownloadLyric,&QPushButton::toggled, [=](bool checked){
+        if(checked)
+            subpageStackedLayout->setCurrentIndex(2);
+    });
 
     connect(subPageDownloadLyric,SIGNAL(sig_autoSelectRawLyric(const QString&)),this,
             SLOT(onAutoSelectRawLyric(const QString&)));
@@ -114,9 +123,9 @@ void PageMain::initConnection()
     connect(subPageDownloadSong->tableNcmSongSearch,SIGNAL(sig_setMusicPathToMakingPage(QString)),
             this,SLOT(onAutoSelectMusic(QString)));
 
-
     connect(&subPageMaking->threadGuessLyricInfo,SIGNAL(sig_loadLyricInfoGuessResult(QString,QString)),
             this, SLOT(onLoadLyricGuess(QString,QString)));
+
     connect(&subPageMaking->threadGuessLyricInfo,SIGNAL(sig_loadNcmInfoGuessResult(QString,QString)),
             this, SLOT(onLoadNcmGuess(QString,QString)));
 

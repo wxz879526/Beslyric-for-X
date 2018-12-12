@@ -49,7 +49,10 @@ void TopWidget::initLayout()
     btnRestore->setVisible(false);
 
     btnSkinBox->setObjectName("btnSkinBox");
+    btnSkinBox->setToolTip(tr("换肤"));
+
     btnSetting->setObjectName("btnSetting");
+    btnSetting->setToolTip(tr("设置"));
 
     QLabel* labelSepHeader = new QLabel(topWidgetContainer);
     labelSepHeader->setObjectName("labelSepHeader");
