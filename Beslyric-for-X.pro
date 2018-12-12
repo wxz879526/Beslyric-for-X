@@ -61,3 +61,23 @@ DISTFILES +=
 
 RESOURCES += \
     resource.qrc
+
+win32 {
+    ffmpeg_bin_dir = $$PWD\beslyric-lib\win32\ffmpeg_4_0_1\bin\*.*
+    sdl_bin_dir = $$PWD\beslyric-lib\SDL_2_0_3\bin\*.*
+    CONFIG(debug, debug|release) {
+        dst_dir = $$OUT_PWD\\debug\\
+    } else {
+        dst_dir = $$OUT_PWD\\release\\
+    }
+
+    # dst_dir 最后的 \\ 是必须的，用来标示 xcopy 到一个文件夹，若不存在，创建之
+
+    # Replace slashes in paths with backslashes for Windows
+    ffmpeg_bin_dir ~= s,/,\\,g
+    sdl_bin_dir ~= s,/,\\,g
+    dst_dir ~= s,/,\\,g
+
+    system(xcopy $$ffmpeg_bin_dir $$dst_dir /y /e)
+    system(xcopy $$sdl_bin_dir $$dst_dir /y /e)
+}
