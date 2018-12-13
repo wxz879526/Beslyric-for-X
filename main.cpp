@@ -14,10 +14,10 @@ int main(int argc, char *argv[])
 {
     MyApplication app(argc, argv);
 
-    MainWindow MainFrameWidget(&app);
-    app.SetMakingLyricNotifyWidget(MainFrameWidget.mainWidget);
-    app.SetStackFrame(&MainFrameWidget);
-    MainFrameWidget.show();
+    MainWindow mainFrameWidget(&app);
+    app.SetMakingLyricNotifyWidget(mainFrameWidget.mainWidget);
+    app.SetStackFrame(&mainFrameWidget);
+    mainFrameWidget.show();
 
     return app.exec();
 }
