@@ -28,29 +28,29 @@ public:
         return QString::number(sizeAfterScale);
     }
 
-    //获得 CSS 样式字符串
-    QString GetCssString()
+    //获得 QSS 样式字符串
+    QString GetQssString()
     {
         setDefaultParameter();
 
         SetParameter();
 
-        QString cssContent;
+        QString qssContent;
 
-        cssContent += GetQWidgetCss();
-        cssContent += GetQScrollArea();
-        cssContent += GetQLabelCss();
-        cssContent += GetQPushButtonCss();
-        cssContent += GetQSliderCss();
-        cssContent += GetQEditCss();
-        cssContent += GetQMenuCss();
-        cssContent += GetQScrollBarCss();
-        cssContent += GetQTabWidgetCss();
-        cssContent += GetQTableWidgetCss();
-        cssContent += GetQListWidgetCss();
-        cssContent += GetQCheckBoxCss();
+        qssContent += GetQWidgetQss();
+        qssContent += GetQScrollArea();
+        qssContent += GetQLabelQss();
+        qssContent += GetQPushButtonQss();
+        qssContent += GetQSliderQss();
+        qssContent += GetQEditQss();
+        qssContent += GetQMenuQss();
+        qssContent += GetQScrollBarQss();
+        qssContent += GetQTabWidgetQss();
+        qssContent += GetQTableWidgetQss();
+        qssContent += GetQListWidgetQss();
+        qssContent += GetQCheckBoxQss();
 
-        return cssContent;
+        return qssContent;
     }
 
     virtual ~ISkin(){}
@@ -60,7 +60,7 @@ protected:
 
 private:
 
-    QString GetQWidgetCss()
+    QString GetQWidgetQss()
    {
         QString str =
         "QWidget{"
@@ -176,7 +176,7 @@ private:
           return str;
     }
 
-    QString GetQLabelCss()
+    QString GetQLabelQss()
     {
         QString str =
         "QLabel{"
@@ -273,7 +273,7 @@ private:
     }
 
 
-    QString GetQPushButtonCss()
+    QString GetQPushButtonQss()
     {
         QString str =
 
@@ -806,7 +806,7 @@ private:
         return str;
     }
 
-    QString GetQSliderCss()
+    QString GetQSliderQss()
     {
         QString str =
                 /* 滑块器样式 */
@@ -888,7 +888,7 @@ private:
     }
 
 
-    QString GetQEditCss()
+    QString GetQEditQss()
     {
         QString str =
         "QLineEdit{"
@@ -911,7 +911,7 @@ private:
         return str;
     }
 
-    QString GetQMenuCss()
+    QString GetQMenuQss()
     {
         QString str =
                 "QMenu::separator {"
@@ -924,7 +924,7 @@ private:
         return str;
     }
 
-    QString GetQScrollBarCss()
+    QString GetQScrollBarQss()
     {
         QString str =
 
@@ -986,7 +986,7 @@ private:
         return str;
     }
 
-    QString GetQTabWidgetCss()
+    QString GetQTabWidgetQss()
     {
         QString str = ""
         "QTabWidget:pane {"
@@ -1014,7 +1014,7 @@ private:
         return str;
     }
 
-    QString GetQTableWidgetCss()
+    QString GetQTableWidgetQss()
     {
         QString str = ""
         " QTableView"
@@ -1070,7 +1070,7 @@ private:
         return str;
     }
 
-    QString GetQListWidgetCss()
+    QString GetQListWidgetQss()
     {
         QString str = ""
          "QListWidget{"
@@ -1099,7 +1099,7 @@ private:
         return str;
     }
 
-    QString GetQCheckBoxCss()
+    QString GetQCheckBoxQss()
     {
         QString str = ""
           "  QCheckBox::indicator:unchecked {"

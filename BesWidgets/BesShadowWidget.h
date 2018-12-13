@@ -16,6 +16,7 @@ public:
     void SetMarginTop(int margin);
 
     void SetBackgroundColor(QColor bgColor);
+
 protected:
     virtual void paintEvent(QPaintEvent *);
 

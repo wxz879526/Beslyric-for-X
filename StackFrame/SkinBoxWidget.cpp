@@ -42,7 +42,8 @@ void SkinBoxWidget::initLayout()
     btnTheme->setObjectName("btnTheme");
     btnPureColor->setObjectName("btnPureColor");
 
-    btnTheme->setCheckable(true);               btnTheme->setChecked(true);
+    btnTheme->setCheckable(true);
+    btnTheme->setChecked(true);
     btnPureColor->setCheckable(true);
     btnTheme->setAutoExclusive(true);
     btnPureColor->setAutoExclusive(true);
@@ -322,7 +323,7 @@ void SkinBoxWidget::initSliderGrooveColor()
 }
 
 //切换为自定义的颜色皮肤
-void  SkinBoxWidget::signalToCustomSkin()
+void SkinBoxWidget::signalToCustomSkin()
 {
     //获得当前色调和亮度
     int h = SliderHue->value();
@@ -336,8 +337,6 @@ void  SkinBoxWidget::signalToCustomSkin()
     colorStr.sprintf("#%.2x%.2x%.2x",r,g,b);
     emit(signalSetCustomSkin(colorStr));
 }
-
-
 
 void SkinBoxWidget::swithToPage(int nIndex)
 {

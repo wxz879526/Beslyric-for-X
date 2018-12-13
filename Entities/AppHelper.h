@@ -15,11 +15,12 @@ public:
     static void SetStyle(QApplication* app, const QString &styleName)
     {
         QSharedPointer<ISkin> skin = SkinFacgtory::getSkin(styleName);
-        QString qss = skin->GetCssString();
+        QString qss = skin->GetQssString();
 
         QFile file(QString(":/resource/qss/black.qss"));
         file.open(QFile::ReadOnly);
         QString qssTest = QLatin1String(file.readAll());    //暂时保留测试用
+        file.close();
 
         app->setPalette(QPalette(styleName == "black" ? QColor("#393b3f"):  QColor("#e5e5e7")));
         app->setStyleSheet(qss);
