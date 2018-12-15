@@ -137,7 +137,7 @@ class SkinBoxWidget : public BesShadowWidget
     Q_OBJECT
 
 public:
-    SkinBoxWidget(QWidget *parent = 0);
+    SkinBoxWidget(QWidget *parent = nullptr);
     ~SkinBoxWidget();
 
     void initLayout();

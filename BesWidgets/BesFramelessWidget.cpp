@@ -11,8 +11,8 @@ BesFramelessWidget::BesFramelessWidget(QWidget *parent)
     SetFrameBorder(8);
 
     this->dir = NONE;
-    this->setMinimumHeight(800 * BesScaleUtil::scale());
-    this->setMinimumWidth(1224 * BesScaleUtil::scale());
+    this->setMinimumHeight(static_cast<int>(800 * BesScaleUtil::scale()));
+    this->setMinimumWidth(static_cast<int>(1224 * BesScaleUtil::scale()));
     this->setWindowFlags(Qt::FramelessWindowHint|Qt::WindowSystemMenuHint|Qt::MaximizeUsingFullscreenGeometryHint );
 
     this->setMouseTracking(true);  //详见 BesFramelessWidget.h 注释

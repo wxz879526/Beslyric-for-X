@@ -10,14 +10,14 @@ public:
     //按和最大宽的比例缩放,得到字符串表示
     inline QString scaleNum(int num)
     {
-        int numAfterScale = num * BesScaleUtil::scale();
+        int numAfterScale = static_cast<int>(num * BesScaleUtil::scale());
         return QString::number(numAfterScale);
     }
 
     //按和最大宽的比例缩放，但是又不要缩放太小，取缩放前后均值,得到字符串表示
     inline QString mscaleNum(int num)
     {
-        int numAfterScale = num * BesScaleUtil::mscale();
+        int numAfterScale = static_cast<int>(num * BesScaleUtil::mscale());
         return QString::number(numAfterScale);
     }
 

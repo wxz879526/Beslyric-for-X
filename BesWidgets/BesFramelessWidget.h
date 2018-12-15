@@ -36,7 +36,7 @@ class BesFramelessWidget : public BesShadowWidget
 {
     Q_OBJECT
 public:
-    BesFramelessWidget(QWidget *parent = 0);
+    BesFramelessWidget(QWidget *parent = nullptr);
     virtual~BesFramelessWidget(){}
 
     void SetFrameBorder(int boder);
