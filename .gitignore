@@ -1,6 +1,5 @@
 #Visual-Studio-IDE-Related
 .vs
-Win32
 debug
 release
 *.vcxproj*
@@ -16,7 +15,6 @@ release
 *.la
 *.lai
 *.so
-*.dll
 *.dylib
 
 # Qt-es
